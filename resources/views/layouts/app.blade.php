@@ -7,7 +7,6 @@
         {{-- <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"> --}}
         <script src="https://unpkg.com/feather-icons"></script>
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-        <script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
 
         <title> @setting('metaTitle')</title>
         <meta name="description" content="@setting('metaDescription')">
@@ -58,9 +57,6 @@
                     sidebar.classList.add('hidden');
                 }
             });
-        </script>
-        <script>
-            CKEDITOR.replace('content');
         </script>
 
     </body>

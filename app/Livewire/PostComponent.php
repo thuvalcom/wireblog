@@ -175,8 +175,8 @@ class PostComponent extends Component
 
     public function destroy($id)
     {
-        $category = Post::findOrFail($id);
-        $category->delete();
+        $post = Post::findOrFail($id);
+        $post->delete();
         $this->confirmingDelete = false;
         session()->flash('success', 'Post Deleted successfully.');
         $this->redirect('/posts', navigate: true);

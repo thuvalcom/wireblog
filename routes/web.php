@@ -2,6 +2,7 @@
 
 use App\Livewire\Home;
 use App\Livewire\Login;
+use App\Livewire\Pages;
 use App\Livewire\Profile;
 use App\Livewire\Register;
 use App\Livewire\Settings;
@@ -35,6 +36,7 @@ Route::get('/post/{slug}', SinglePost::class)->name('post');
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/posts', PostComponent::class)->name('posts');
+    Route::get('/pages', Pages::class)->name('pages');
     Route::get('/categories', CategoryComponent::class)->name('categories');
     Route::get('/dashboard', Dashboard::class)->name('dashboard');
     Route::get('/profile', Profile::class)->name('profile');

@@ -108,7 +108,7 @@
 
                     <!-- Hak cipta -->
                     <div class="mt-4 text-center">
-                        <p class="text-gray-400">© 2024 Wire Blog. Hak Cipta Dilindungi.</p>
+                        <p class="text-gray-400">© 2024 @setting('metaTitle') Hak Cipta Dilindungi.</p>
                     </div>
                 </div>
             </footer>
