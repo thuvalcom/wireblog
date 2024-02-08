@@ -7,26 +7,30 @@
     @endpush
 @endsection
 <div class="mt-10 px-10">
-    <div class="max-w-screen-xl mx-auto grid lg:grid-cols-3 gap-8">
+    <div class="mx-auto grid max-w-screen-xl gap-8 lg:grid-cols-3">
         <!-- Article Section -->
-        <div class="lg:col-span-2 grid md:grid-cols-2 gap-8">
+        <div class="grid gap-8 md:grid-cols-2 lg:col-span-2">
             @foreach ($posts as $post)
-                <div class="overflow-hidden rounded-lg bg-white shadow-sm mb-8">
-                    <div class="h-48 lg:h-64 bg-cover bg-center p-4"
-                         style="background-image: url('{{ asset('storage/' . $post->image) }}')">
-                        <div class="flex justify-end items-end h-full">
-                            <span class="rounded-lg bg-white px-2 py-1 text-xs text-indigo-600">{{ $post->category->name }}</span>
+                <div class="mb-8 overflow-hidden rounded-lg bg-white shadow-sm">
+                    <div class="h-48 rounded-sm bg-cover bg-center p-4 lg:h-64"
+                        style="background-image: url('{{ asset('storage/' . $post->image) }}')">
+                        <div class="flex h-full items-end justify-end">
+                            <span
+                                class="rounded-md bg-indigo-500 px-6 py-1 text-xs text-white">{{ $post->category->name }}</span>
                         </div>
                     </div>
                     <div class="p-4 lg:p-6">
-                        <h2 class="text-xl lg:text-2xl xl:text-3xl font-bold text-gray-900 mb-2">{{ str($post->title)->words(8) }}</h2>
-                        <p class="text-gray-700 mb-4">{{ str($post->content)->words(10) }}</p>
+                        <h2 class="mb-2 text-xl font-bold text-gray-900 hover:text-indigo-800 lg:text-2xl xl:text-3xl">
+                            <a href="{{ route('post', $post->slug) }}">
+                                {{ str($post->title)->words(8) }}</a>
+                        </h2>
+
                         <div class="flex items-center justify-between">
-                            <p class="text-sm text-gray-500">Posted by <span
+                            <p class="rounded-sm bg-indigo-500 px-2 py-0 text-sm text-white">Posted by <span
                                     class="font-bold">{{ $post->user->name }}</span> •
                                 {{ $post->created_at->diffForHumans() }}</p>
                             <a href="{{ route('post', $post->slug) }}"
-                               class="rounded bg-indigo-600 px-3 py-1 text-xs font-bold uppercase text-white">Read
+                                class="rounded bg-indigo-600 px-3 py-1 text-xs font-bold uppercase text-white">Read
                                 More</a>
                         </div>
                     </div>
@@ -35,66 +39,51 @@
 
         </div>
         <!-- Sidebar Section -->
-        <div class="lg:col-span-1 sm:mx-auto">
+        <div class="sm:mx-auto lg:col-span-1">
             <div class="bg-white p-4">
-                <p class="text-xl font-bold mb-4 text-slate-900">Sidebar Title</p>
-
                 <!-- List Category -->
                 <div class="mb-6">
-                    <h3 class="text-lg font-semibold mb-2 text-slate-900">Categories</h3>
-                    <ul class="list-none pl-4 space-y-2">
-                        <li class="flex items-center">
-                            <span class="bg-indigo-600 text-slate-900 feather-icon p-2 rounded-full mr-2" data-feather="folder"></span>
-                            <a href="#" class="text-slate-900 hover:underline">Category 1</a>
-                        </li>
-                        <li class="flex items-center">
-                            <span class="bg-indigo-600 text-slate-900 feather-icon p-2 rounded-full mr-2" data-feather="folder"></span>
-                            <a href="#" class="text-slate-900 hover:underline">Category 2</a>
-                        </li>
-                        <!-- Add more categories as needed -->
+                    <h3
+                        class="mx-w-xs mb-2 bg-indigo-600 px-4 py-2 text-lg font-semibold text-white hover:transition-opacity">
+                        Categories</h3>
+                    <ul class="list-none space-y-2 pl-1">
+                        @foreach ($categories as $category)
+                            <li class="flex items-center">
+                                <span class="feather-icon mr-2 rounded-full bg-indigo-600 p-2 text-slate-900"
+                                    data-feather="folder"></span>
+                                <a href="#"
+                                    class="text-slate-900 hover:animate-none hover:bg-indigo-600 hover:px-4 hover:py-1 hover:text-white">{{ $category->name }}</a>
+                            </li>
+                        @endforeach
+
                     </ul>
                 </div>
 
                 <!-- Popular Articles -->
                 <div>
-                    <h3 class="text-lg font-semibold mb-2 text-slate-900">Popular Articles</h3>
-                    <ul class="list-none pl-4 space-y-2">
+                    <h3
+                        class="mx-w-xs mb-2 bg-indigo-600 px-4 py-2 text-lg font-semibold text-white hover:transition-opacity">
+                        Popular Articles</h3>
+                    <ul class="list-none space-y-2 pl-4">
                         <li class="flex items-center">
-                            <span class="bg-indigo-600 text-slate-900 feather-icon p-2 rounded-full mr-2" data-feather="file-text"></span>
-                            <a href="#" class="text-slate-900 hover:underline">Article 1</a>
+                            <span class="feather-icon mr-2 rounded-full bg-indigo-600 p-2 text-slate-900"
+                                data-feather="file-text"></span>
+                            <a href="#"
+                                class="text-slate-900 hover:animate-none hover:bg-indigo-600 hover:px-4 hover:py-1 hover:text-white">Article
+                                1</a>
                         </li>
-                        <li class="flex items-center">
-                            <span class="bg-indigo-600 text-slate-900 feather-icon p-2 rounded-full mr-2" data-feather="file-text"></span>
-                            <a href="#" class="text-slate-900 hover:underline">Article 2</a>
-                        </li>
-                        <!-- Add more popular articles as needed -->
+
                     </ul>
                 </div>
             </div>
         </div>
 
-
         <!-- Pagination -->
-        <div class="lg:col-span-2 mt-8">
+        <div class="mt-8 lg:col-span-2">
             <div class="flex justify-center">
                 {{ $posts->links() }}
             </div>
         </div>
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 </div>
