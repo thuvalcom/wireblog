@@ -8,16 +8,23 @@
 @endsection
 <div>
 
-    <div class="mt-10 grid grid-cols-4 gap-8 px-10 md:grid-cols-12">
+    <div class="flex flex-col gap-8 p-8 md:flex-row md:p-16">
         <!-- Single Post -->
-        <div class="col-span-3 overflow-hidden rounded-lg bg-white shadow-lg md:col-span-9">
-            <div class="h-56 bg-cover bg-center p-4"
-                style="background-image: url('{{ asset('storage/' . $post->image) }}')">
-                <div class="flex justify-between">
+        <div class="w-full bg-white p-8 shadow-md md:w-2/3">
+            <div class="relative h-56 overflow-hidden">
+                <div class="absolute inset-0 bg-cover bg-center"
+                    style="background-image: url('{{ asset('storage/' . $post->image) }}')"></div>
+
+                <!-- Overlay for Text -->
+                <div class="absolute inset-0 bg-black opacity-30 hover:opacity-0"></div>
+
+                <!-- Category Badge -->
+                <div class="absolute right-4 top-4">
                     <span
-                        class="rounded-lg bg-white px-2 py-1 text-xs text-indigo-600">{{ $post->category->name }}</span>
+                        class="inline-block rounded bg-indigo-600 px-2 py-1 text-xs font-semibold uppercase text-white">{{ $post->category->name }}</span>
                 </div>
             </div>
+
             <div class="p-4">
                 <p class="text-3xl text-gray-900">{{ $post->title }}</p>
                 <p class="mt-2 text-gray-700">{!! nl2br(e($post->content)) !!}</p>
@@ -31,16 +38,29 @@
                     </div>
                     <div>
                         <a href="#"
-                            class="rounded bg-indigo-600 px-3 py-1 text-xs font-bold uppercase text-white">{{ $post->category->name }}</a>
+                            class="rounded bg-indigo-600 px-3 py-1 text-xs font-bold uppercase text-white">
+                            {{ $post->category->name }}
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
         <!-- Sidebar -->
-        <div class="col-span-1 overflow-hidden rounded-lg bg-white px-5 py-5 shadow-lg md:col-span-3">
-            @include('home.sidebar')
+        <div class="w-full md:w-1/3">
+            <div class="rounded-lg bg-white px-4 py-4 shadow-lg">
+                <h2 class="mb-2 rounded bg-indigo-600 p-2 text-2xl font-bold uppercase tracking-wider text-white">
+                    Kategori
+                </h2>
+                <div class="mt-2 space-y-1">
+                    @foreach ($categories as $category)
+                        <span
+                            class="mb-2 mr-2 inline-block rounded-full bg-indigo-200 px-3 py-1 text-sm font-semibold text-indigo-700 transition-colors duration-200 hover:bg-indigo-300 hover:text-indigo-800">
+                            {{ $category->name }}
+                        </span>
+                    @endforeach
+                </div>
+            </div>
         </div>
-
     </div>
 
 </div>
