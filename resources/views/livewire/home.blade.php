@@ -27,7 +27,7 @@
                     </div>
                     <div class="p-4 lg:p-6">
                         <h2 class="mb-2 text-xl font-bold text-gray-900 hover:text-indigo-800 lg:text-2xl xl:text-3xl">
-                            <a href="{{ route('post', $post->slug) }}">
+                            <a wire:navigate href="{{ route('post', $post->slug) }}">
                                 {{ str($post->title)->words(8) }}</a>
                         </h2>
 
@@ -35,7 +35,7 @@
                             <p class="rounded-sm bg-indigo-500 px-2 py-0 text-sm text-white">Posted by <span
                                     class="font-bold">{{ $post->user->name }}</span> •
                                 {{ $post->created_at->diffForHumans() }}</p>
-                            <a href="{{ route('post', $post->slug) }}"
+                            <a wire:navigate href="{{ route('post', $post->slug) }}"
                                 class="rounded bg-indigo-600 px-3 py-1 text-xs font-bold uppercase text-white">Read
                                 More</a>
                         </div>
@@ -57,7 +57,7 @@
                             <li class="flex items-center">
                                 <span class="feather-icon mr-2 rounded-full bg-indigo-600 p-2 text-slate-900"
                                     data-feather="folder"></span>
-                                <a href="#"
+                                <a wire:navigate href="{{ route('category', $category->slug) }}"
                                     class="text-slate-900 hover:animate-none hover:bg-indigo-600 hover:px-4 hover:py-1 hover:text-white">{{ $category->name }}</a>
                             </li>
                         @endforeach

@@ -10,7 +10,7 @@ class Navbar extends Component
 
     public function render()
     {
-        $categories = Category::take(4)->get();
+        $categories = Category::take(8)->get();
         return view('livewire.navbar', compact('categories'));
     }
 }

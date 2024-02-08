@@ -7,10 +7,12 @@ use App\Livewire\Profile;
 use App\Livewire\Register;
 use App\Livewire\Settings;
 use App\Livewire\Dashboard;
+
 use App\Livewire\SinglePost;
 use App\Livewire\PostComponent;
 use App\Livewire\ResetPassword;
 use App\Livewire\CategoryComponent;
+use App\Livewire\CategoryShow;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -33,6 +35,7 @@ Route::get('/', Home::class)->name('home');
 Route::get('/login', Login::class)->name('login');
 Route::get('/register', Register::class)->name('register');
 Route::get('/post/{slug}', SinglePost::class)->name('post');
+Route::get('/category/{slug}', CategoryShow::class)->name('category');
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/posts', PostComponent::class)->name('posts');

@@ -3,7 +3,7 @@
         <nav class="container mx-auto px-6 py-3">
             <div class="flex items-center justify-between">
                 <div>
-                    <a class="text-2xl font-bold text-white" href="/">Logo</a>
+                    <a class="text-2xl font-bold text-white" wire:navigate href="/">Logo</a>
                 </div>
 
                 <div :class="{ 'block': open, 'hidden': !open }"
@@ -11,7 +11,7 @@
 
                     <div class="px-4">
                         <a class="block rounded-md px-3 py-1 text-gray-700 hover:bg-indigo-500 hover:text-white md:text-gray-300 md:hover:bg-indigo-700 md:hover:text-white"
-                            href="#">Home</a>
+                            wire:navigate href="/">Home</a>
                     </div>
                     <div class="relative px-4" x-data="{ open: false }">
                         <button @click="open = !open"
@@ -21,7 +21,7 @@
                         <div x-show="open" @click.away="open = false"
                             class="absolute left-0 z-10 mt-2 w-48 space-y-1 rounded-md bg-white py-2 text-black shadow-lg">
                             @foreach ($categories as $category)
-                                <a href="#"
+                                <a wire:navigate href="{{ route('category', $category->slug) }}"
                                     class="block rounded-md px-3 py-1 text-gray-700 hover:bg-indigo-500 hover:text-white">
                                     {{ $category->name }}
                                 </a>

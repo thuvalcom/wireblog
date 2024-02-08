@@ -27,7 +27,7 @@
 
             <div class="p-4">
                 <p class="text-3xl text-gray-900">{{ $post->title }}</p>
-                <p class="mt-2 text-gray-700">{!! nl2br(e($post->content)) !!}</p>
+                <p class="mt-2 text-base font-normal text-slate-900">{!! nl2br(e($post->content)) !!}</p>
             </div>
             <div class="border-t border-gray-300 p-4 text-gray-700">
                 <div class="flex items-center justify-between">
@@ -37,10 +37,9 @@
                             {{ $post->created_at->diffForHumans() }}</p>
                     </div>
                     <div>
-                        <a href="#"
-                            class="rounded bg-indigo-600 px-3 py-1 text-xs font-bold uppercase text-white">
+                        <span class="rounded bg-indigo-600 px-3 py-1 text-xs font-bold uppercase text-white">
                             {{ $post->category->name }}
-                        </a>
+                        </span>
                     </div>
                 </div>
             </div>
@@ -55,7 +54,7 @@
                     @foreach ($categories as $category)
                         <span
                             class="mb-2 mr-2 inline-block rounded-full bg-indigo-200 px-3 py-1 text-sm font-semibold text-indigo-700 transition-colors duration-200 hover:bg-indigo-300 hover:text-indigo-800">
-                            {{ $category->name }}
+                            <a wire:navigate href="{{ route('category', $category->slug) }}">{{ $category->name }}</a>
                         </span>
                     @endforeach
                 </div>

@@ -44,9 +44,7 @@
                 <label for="image" class="block text-sm font-semibold text-indigo-600">Upload Image:</label>
                 <input wire:model="image" type="file" id="image" name="image"
                     class="mt-1 rounded-md border bg-indigo-200 p-2">
-                @if ($image)
-                    <p class="mt-2 text-sm text-gray-500">Uploading...</p>
-                @endif
+
                 @error('image')
                     <em>{{ $message }}</em>
                 @enderror

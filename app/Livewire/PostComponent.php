@@ -42,6 +42,7 @@ class PostComponent extends Component
     public function mount()
     {
         $this->user_id = auth()->id(); // Atau nilai default sesuai kebutuhan
+
     }
 
 
@@ -128,24 +129,17 @@ class PostComponent extends Component
     {
         $this->validate([
             'title' => 'required',
-
             'content' => 'required',
-            'image' => 'nullable|image|max:2048',
+            'image' => 'sometimes|image|max:2048',
             'category_id' => 'required',
             'description' => 'required',
             'description' => 'required',
             'tags' => 'required',
             'user_id' => 'required|integer|exists:users,id',
-
-
         ]);
-        $this->slug = Str::slug($this->title, '-');
-
-
-        // Simpan gambar ke storage
-        $imagePath = $this->image->store('article_images', 'public');
         $post = Post::findOrFail($this->selected_id);
-
+        $imagePath = $this->image->store('article_images', 'public');
+        $this->slug = Str::slug($this->title, '-');
         $post->update([
             'title' => $this->title,
             'slug' => $this->slug,

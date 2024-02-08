@@ -7,16 +7,17 @@
         @yield('title')
         <script src="https://unpkg.com/feather-icons"></script>
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+        <link rel="stylesheet" href="{{ asset('build/assets/app.css') }}">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link
             href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap"
             rel="stylesheet">
         @stack('meta')
-        @vite('resources/css/app.css')
+        {{-- @vite('resources/css/app.css') --}}
     </head>
 
-    <body class="font-family: 'Montserrat', sans-serif; bg-gray-100">
+    <body class="bg-gray-100">
         @livewire('navbar')
 
         {{ $slot }}
@@ -30,7 +31,7 @@
                         <!-- Menu navigasi -->
                         <div class="mt-4 md:mt-0">
                             <nav class="flex space-x-4">
-                                <a href="#"
+                                <a wire:navigate href="/"
                                     class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:text-white">Beranda</a>
                                 <a href="#"
                                     class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:text-white">Tentang</a>
@@ -48,6 +49,7 @@
                 </div>
             </footer>
         </div>
+        <script src="{{ asset('build/assets/app.js') }}"></script>
 
     </body>
 
