@@ -86,9 +86,7 @@
 
         <!-- Pagination -->
         <div class="mt-8 lg:col-span-2">
-            <div class="flex justify-center">
-                {{ $posts->links() }}
-            </div>
+            {{ $posts->links() }}
         </div>
     </div>
 
