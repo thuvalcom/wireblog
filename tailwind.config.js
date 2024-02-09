@@ -1,32 +1,67 @@
+const defaultTheme = require("tailwindcss/defaultTheme");
+
 /** @type {import('tailwindcss').Config} */
-export default {
+module.exports = {
     content: [
-        "./resources/**/*.blade.php",
-        "./resources/**/*.js",
-        "./resources/**/*.vue",
+        "./vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php",
+        "./storage/framework/views/*.php",
+        "./resources/views/**/*.blade.php",
     ],
+
     theme: {
-        container: {
-            center: true,
-            padding: {
-                DEFAULT: "1rem",
-                md: "2rem",
-            },
-        },
-        aspectRatio: {
-            auto: "auto",
-            square: "1 / 1",
-            video: "16 / 9",
-        },
         extend: {
             colors: {
-                Gelap: "#0B0C10", // Warna teks untuk tema gelap (Navy blue)
-                Cerah: "#66FCF1", // Warna teks untuk tema terang (Light cream)
-            },
-            screens: {
-                xs: "480px",
+                primary: {
+                    50: "#eff6ff",
+                    100: "#dbeafe",
+                    200: "#bfdbfe",
+                    300: "#93c5fd",
+                    400: "#60a5fa",
+                    500: "#3b82f6",
+                    600: "#2563eb",
+                    700: "#1d4ed8",
+                    800: "#1e40af",
+                    900: "#1e3a8a",
+                },
             },
         },
+        fontFamily: {
+            body: [
+                "Open Sans",
+                "ui-sans-serif",
+                "system-ui",
+                "-apple-system",
+                "system-ui",
+                "Segoe UI",
+                "Roboto",
+                "Helvetica Neue",
+                "Arial",
+                "Noto Sans",
+                "sans-serif",
+                "Apple Color Emoji",
+                "Segoe UI Emoji",
+                "Segoe UI Symbol",
+                "Noto Color Emoji",
+            ],
+            sans: [
+                "Open Sans",
+                "ui-sans-serif",
+                "system-ui",
+                "-apple-system",
+                "system-ui",
+                "Segoe UI",
+                "Roboto",
+                "Helvetica Neue",
+                "Arial",
+                "Noto Sans",
+                "sans-serif",
+                "Apple Color Emoji",
+                "Segoe UI Emoji",
+                "Segoe UI Symbol",
+                "Noto Color Emoji",
+            ],
+        },
     },
-    plugins: [],
+
+    plugins: [require("@tailwindcss/forms")],
 };

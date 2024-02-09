@@ -11,18 +11,8 @@
     <div class="flex flex-col gap-8 p-8 md:flex-row md:p-16">
         <!-- Single Post -->
         <div class="w-full bg-white p-8 shadow-md md:w-2/3">
-            <div class="relative h-56 overflow-hidden">
-                <div class="absolute inset-0 bg-cover bg-center"
-                    style="background-image: url('{{ asset('storage/' . $post->image) }}')"></div>
-
-                <!-- Overlay for Text -->
-                <div class="absolute inset-0 bg-black opacity-30 hover:opacity-0"></div>
-
-                <!-- Category Badge -->
-                <div class="absolute right-4 top-4">
-                    <span
-                        class="inline-block rounded bg-indigo-600 px-2 py-1 text-xs font-semibold uppercase text-white">{{ $post->category->name }}</span>
-                </div>
+            <div class="flex rounded-lg">
+                <img src="{{ asset('storage/' . $post->image) }}" class="object-contain object-center">
             </div>
 
             <div class="p-4">
@@ -43,6 +33,7 @@
                     </div>
                 </div>
             </div>
+            <livewire:comments :model="$post" />
         </div>
         <!-- Sidebar -->
         <div class="w-full md:w-1/3">

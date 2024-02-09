@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         @yield('title')
         <script src="https://unpkg.com/feather-icons"></script>
-        <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+        {{-- <link rel="stylesheet" href="{{ asset('css/app.css') }}"> --}}
         <link rel="stylesheet" href="{{ asset('build/assets/app.css') }}">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

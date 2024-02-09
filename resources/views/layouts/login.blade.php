@@ -8,11 +8,10 @@
         <meta name="description" content="@setting('metaDescription')">
         <meta name="keywords" content="@setting('metaKeywords')">
         <meta name="author" content="@setting('metaAuthor')">
-        <!-- Include Tailwind CSS and Feather Icon CDN -->
-        {{-- <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"> --}}
         <link rel="stylesheet" href="{{ asset('build/assets/app.css') }}">
+        {{-- <link rel="stylesheet" href="{{ asset('css/app.css') }}"> --}}
         <script src="https://unpkg.com/feather-icons"></script>
-        @vite('resources/css/app.css')
+        {{-- @vite('resources/css/app.css') --}}
     </head>
 
     <body class="bg-gray-900 text-white">
