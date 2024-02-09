@@ -7,26 +7,34 @@
                     <i data-feather="home" class="mr-2 h-4 w-4"></i> <a wire:navigate href="{{ route('dashboard') }}"
                         @class(['current' => request()->is('dashboard')])>Dashboard</a>
                 </li>
-                <li class="flex items-center py-1 text-gray-300 hover:text-white">
-                    <i data-feather="file-text" class="mr-2 h-4 w-4"></i> <a wire:navigate href="{{ route('posts') }}"
-                        @class(['current' => request()->is('posts')])>Posts</a>
-                </li>
-                <li class="flex items-center py-1 text-gray-300 hover:text-white">
-                    <i data-feather="tag" class="mr-2 h-4 w-4"></i> <a wire:navigate href="{{ route('categories') }}"
-                        @class(['current' => request()->is('categories')])>Categories</a>
-                </li>
-                <li class="flex items-center py-1 text-gray-300 hover:text-white">
-                    <i data-feather="file-text" class="mr-2 h-4 w-4"></i> <a wire:navigate href="{{ route('pages') }}"
-                        @class(['current' => request()->is('pages')])>Pages</a>
-                </li>
+                @can('Acces All')
+                    <li class="flex items-center py-1 text-gray-300 hover:text-white">
+                        <i data-feather="file-text" class="mr-2 h-4 w-4"></i> <a wire:navigate href="{{ route('posts') }}"
+                            @class(['current' => request()->is('posts')])>Posts</a>
+                    </li>
+                @endcan
+                @can('Acces All')
+                    <li class="flex items-center py-1 text-gray-300 hover:text-white">
+                        <i data-feather="tag" class="mr-2 h-4 w-4"></i> <a wire:navigate href="{{ route('categories') }}"
+                            @class(['current' => request()->is('categories')])>Categories</a>
+                    </li>
+                @endcan
+                @can('Acces All')
+                    <li class="flex items-center py-1 text-gray-300 hover:text-white">
+                        <i data-feather="file-text" class="mr-2 h-4 w-4"></i> <a wire:navigate href="{{ route('pages') }}"
+                            @class(['current' => request()->is('pages')])>Pages</a>
+                    </li>
+                @endcan
                 <li class="flex items-center py-1 text-gray-300 hover:text-white">
                     <i data-feather="user" class="mr-2 h-4 w-4"></i> <a wire:navigate href="{{ route('profile') }}"
                         @class(['current' => request()->is('profile')])>Profile</a>
                 </li>
-                <li class="flex items-center py-1 text-gray-300 hover:text-white">
-                    <i data-feather="settings" class="mr-2 h-4 w-4"></i> <a wire:navigate href="{{ route('settings') }}"
-                        @class(['current' => request()->is('settings')])>Settings</a>
-                </li>
+                @can('Acces All')
+                    <li class="flex items-center py-1 text-gray-300 hover:text-white">
+                        <i data-feather="settings" class="mr-2 h-4 w-4"></i> <a wire:navigate href="{{ route('settings') }}"
+                            @class(['current' => request()->is('settings')])>Settings</a>
+                    </li>
+                @endcan
 
             </ul>
         </div>

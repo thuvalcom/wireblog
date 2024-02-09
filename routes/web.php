@@ -37,13 +37,16 @@ Route::get('/register', Register::class)->name('register');
 Route::get('/post/{slug}', SinglePost::class)->name('post');
 Route::get('/category/{slug}', CategoryShow::class)->name('category');
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth', 'role:admin', 'permission:Acces All'])->group(function () {
     Route::get('/posts', PostComponent::class)->name('posts');
     Route::get('/pages', Pages::class)->name('pages');
     Route::get('/categories', CategoryComponent::class)->name('categories');
+    Route::get('/settings', Settings::class)->name('settings');
+});
+
+Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', Dashboard::class)->name('dashboard');
     Route::get('/profile', Profile::class)->name('profile');
-    Route::get('/settings', Settings::class)->name('settings');
     Route::post('/logout', [Profile::class, 'logout'])->name('logout');
     Route::get('/reset-password/{token}', ResetPassword::class)->name('password.reset');
 });

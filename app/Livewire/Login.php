@@ -25,7 +25,7 @@ class Login extends Component
 
         if (Auth::attempt($data)) {
             session()->flash('success', 'Login Successfuly');
-            $this->redirect('/posts', navigate: true);
+            $this->redirect('/dashboard', navigate: true);
         } else {
             // Login gagal
             session()->flash('error', 'Invalid credentials');
