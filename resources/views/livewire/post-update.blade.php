@@ -48,6 +48,17 @@
                 @error('image')
                     <em>{{ $message }}</em>
                 @enderror
+                <div class="mt-4">
+
+                    @if ($image instanceof \Livewire\TemporaryUploadedFile)
+                        <!-- Menampilkan gambar yang baru diunggah -->
+                        <img src="{{ $image->temporaryUrl() }}">
+                    @elseif($post->image)
+                        <!-- Menampilkan gambar yang ada sebelumnya -->
+                        <img src="{{ Storage::url($post->image) }}">
+                    @endif
+                </div>
+
             </div>
 
             <div class="mb-4">

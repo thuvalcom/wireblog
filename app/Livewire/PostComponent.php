@@ -6,10 +6,12 @@ use App\Models\User;
 use Livewire\Component;
 use App\Models\Back\Post;
 use Illuminate\Support\Str;
+use Livewire\WithPagination;
 use App\Models\Back\Category;
 use Livewire\WithFileUploads;
 use Livewire\Attribute\layout;
-use Livewire\WithPagination;
+use Illuminate\Support\Facades\Storage;
+use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 
 
 class PostComponent extends Component
@@ -130,7 +132,7 @@ class PostComponent extends Component
         $this->validate([
             'title' => 'required',
             'content' => 'required',
-            'image' => 'sometimes|image|max:2048',
+            'image' => 'nullable',
             'category_id' => 'required',
             'description' => 'required',
             'description' => 'required',
@@ -138,19 +140,32 @@ class PostComponent extends Component
             'user_id' => 'required|integer|exists:users,id',
         ]);
         $post = Post::findOrFail($this->selected_id);
-        $imagePath = $this->image->store('article_images', 'public');
+        if ($this->image && $this->image instanceof TemporaryUploadedFile && $this->image->isValid()) {
+            // Delete the old image from the storage
+            if ($post->image) {
+                Storage::delete('public/' . $post->image);
+            }
+
+            // Store the new image
+            $imagePath = $this->image->store('article_images', 'public');
+            $post->image = $imagePath;
+        }
+        // $imagePath = $this->image->store('article_images', 'public');
         $this->slug = Str::slug($this->title, '-');
         $post->update([
             'title' => $this->title,
             'slug' => $this->slug,
             'content' => $this->content,
-            'image' => $imagePath,
             'category_id' => $this->category_id,
             'status' => $this->status,
             'description' => $this->description,
             'tags' => $this->tags,
             'user_id' => $this->user_id,
         ]);
+
+        if (isset($imagePath)) {
+            $post->update(['image' => $imagePath]);
+        }
 
         $this->updatedTitle();
         $this->updatedTags();

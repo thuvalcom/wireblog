@@ -10,6 +10,7 @@
         <meta name="author" content="@setting('metaAuthor')">
         <!-- Include Tailwind CSS and Feather Icon CDN -->
         {{-- <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"> --}}
+        <link rel="stylesheet" href="{{ asset('build/assets/app.css') }}">
         <script src="https://unpkg.com/feather-icons"></script>
         @vite('resources/css/app.css')
     </head>
