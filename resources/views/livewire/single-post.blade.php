@@ -50,7 +50,14 @@
                     @endforeach
                 </div>
             </div>
+            <div class="rounded-lg bg-white px-4 py-4 shadow-lg">
+                <h2 class="mb-2 rounded bg-indigo-600 p-2 text-2xl font-bold uppercase tracking-wider text-white">
+                    Popular Post
+                </h2>
+                @livewire('popular-posts')
+            </div>
         </div>
+
     </div>
 
 </div>

@@ -11,6 +11,7 @@ use Livewire\Attributes\Layout;
 class SinglePost extends Component
 {
     public $post;
+    public $slug;
     #[Layout('layouts.home')]
     public function render()
     {
@@ -23,5 +24,6 @@ class SinglePost extends Component
     public function mount($slug)
     {
         $this->post = Post::where('slug', $slug)->firstOrFail();
+        $this->post->increment('views');
     }
 }

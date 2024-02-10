@@ -67,19 +67,8 @@
 
                 <!-- Popular Articles -->
                 <div>
-                    <h3
-                        class="mx-w-xs mb-2 bg-indigo-600 px-4 py-2 text-lg font-semibold text-white hover:transition-opacity">
-                        Popular Articles</h3>
-                    <ul class="list-none space-y-2 pl-4">
-                        <li class="flex items-center">
-                            <span class="feather-icon mr-2 rounded-full bg-indigo-600 p-2 text-slate-900"
-                                data-feather="file-text"></span>
-                            <a href="#"
-                                class="text-slate-900 hover:animate-none hover:bg-indigo-600 hover:px-4 hover:py-1 hover:text-white">Article
-                                1</a>
-                        </li>
+                    @livewire('popular-posts')
 
-                    </ul>
                 </div>
             </div>
         </div>

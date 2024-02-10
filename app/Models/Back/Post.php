@@ -20,7 +20,8 @@ class Post extends Model
         'image',
         'status',
         'description',
-        'tags'
+        'tags',
+        'views'
     ];
 
     public function user(): \Illuminate\Database\Eloquent\Relations\BelongsTo
