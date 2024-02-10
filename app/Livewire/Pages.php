@@ -26,7 +26,7 @@ class Pages extends Component
     {
         $this->validate([
             'title' => 'required',
-            'slug' => 'required|unique:posts,slug',
+            'slug' => 'required|unique:pages,slug',
             'content' => 'required',
         ]);
         $this->slug = Str::slug($this->title, '-');
@@ -67,8 +67,9 @@ class Pages extends Component
             'title' => 'required',
             'content' => 'required',
         ]);
-        $this->slug = Str::slug($this->title, '-');
         $page = Page::findOrFail($this->selected_id);
+        $this->slug = Str::slug($this->title, '-');
+
 
         $page->update([
             'title' => $this->title,

@@ -67,6 +67,9 @@
 
                 <!-- Popular Articles -->
                 <div>
+                    <h3
+                        class="mx-w-xs mb-2 bg-indigo-600 px-4 py-2 text-lg font-semibold text-white hover:transition-opacity">
+                        Popular Post</h3>
                     @livewire('popular-posts')
 
                 </div>

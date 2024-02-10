@@ -30,8 +30,10 @@
                         </div>
                     </div>
                     <div class="px-4">
-                        <a class="block rounded-md px-3 py-1 text-gray-700 hover:bg-indigo-500 hover:text-white md:text-gray-300 md:hover:bg-indigo-700 md:hover:text-white"
-                            href="#">Menu 2</a>
+                        @foreach ($pages as $page)
+                            <a class="block rounded-md px-3 py-1 text-gray-700 hover:bg-indigo-500 hover:text-white md:text-gray-300 md:hover:bg-indigo-700 md:hover:text-white"
+                                wire:navigate href="{{ route('page', $page->slug) }}">{{ $page->title }}</a>
+                        @endforeach
                     </div>
 
                     <!-- Tombol close -->

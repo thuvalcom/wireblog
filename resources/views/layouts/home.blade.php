@@ -32,11 +32,11 @@
                         <div class="mt-4 md:mt-0">
                             <nav class="flex space-x-4">
                                 <a wire:navigate href="/"
-                                    class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:text-white">Beranda</a>
-                                <a href="#"
-                                    class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:text-white">Tentang</a>
-                                <a href="#"
-                                    class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:text-white">Kontak</a>
+                                    class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:text-white">Home</a>
+                                <a wire:navigate href="/page/about"
+                                    class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:text-white">About</a>
+                                <a wire:navigate href="/page/contact"
+                                    class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:text-white">Contact</a>
                                 <!-- Tambahkan lebih banyak link jika perlu -->
                             </nav>
                         </div>
